@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/comp/Desktop/p2p-messanger/src/network/network.cpp" "CMakeFiles/network.dir/src/network/network.cpp.o" "gcc" "CMakeFiles/network.dir/src/network/network.cpp.o.d"
-  "/home/comp/Desktop/p2p-messanger/src/network/peer_connection.cpp" "CMakeFiles/network.dir/src/network/peer_connection.cpp.o" "gcc" "CMakeFiles/network.dir/src/network/peer_connection.cpp.o.d"
+  "/home/comp/Desktop/p2p-messanger/src/ui/console_client.cpp" "CMakeFiles/console_client.dir/src/ui/console_client.cpp.o" "gcc" "CMakeFiles/console_client.dir/src/ui/console_client.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -8,6 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(OpenSSL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
+find_package(Curses REQUIRED)
 
 add_library(crypto STATIC
     src/crypto/crypto.cpp
@@ -25,6 +26,7 @@ target_link_libraries(crypto
 
 add_library(network STATIC
     src/network/network.cpp
+    src/network/peer_connection.cpp
 )
 
 target_include_directories(network
@@ -35,6 +37,7 @@ target_include_directories(network
 target_link_libraries(network
     PUBLIC
         Boost::system
+        crypto
 )
 
 add_executable(crypto_tests
@@ -55,9 +58,27 @@ target_link_libraries(network_tests
     PRIVATE
         network
         Boost::system
+        crypto
 )
 
 enable_testing()
 add_test(NAME crypto_tests COMMAND crypto_tests)
 add_test(NAME network_tests COMMAND network_tests)
+
+add_executable(console_client
+    src/ui/console_client.cpp
+)
+
+target_include_directories(console_client
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_link_libraries(console_client
+    PRIVATE
+        network
+        crypto
+        Boost::system
+        ${CURSES_LIBRARIES}
+)
 

@@ -1,5 +1,5 @@
-CMakeFiles/network_tests.dir/tests/network_tests.cpp.o: \
- /home/comp/Desktop/p2p-messanger/tests/network_tests.cpp \
+CMakeFiles/console_client.dir/src/ui/console_client.cpp.o: \
+ /home/comp/Desktop/p2p-messanger/src/ui/console_client.cpp \
  /usr/include/stdc-predef.h \
  /home/comp/Desktop/p2p-messanger/include/network/network.hpp \
  /usr/include/boost/asio.hpp \
@@ -1222,5 +1222,6 @@ CMakeFiles/network_tests.dir/tests/network_tests.cpp.o: \
  /usr/include/boost/asio/impl/write_at.hpp \
  /home/comp/Desktop/p2p-messanger/include/network/peer_connection.hpp \
  /home/comp/Desktop/p2p-messanger/include/crypto/crypto.hpp \
- /usr/include/c++/13/iostream /usr/include/c++/13/thread \
- /usr/include/c++/13/bits/this_thread_sleep.h
+ /usr/include/curses.h /usr/include/ncurses_dll.h /usr/include/unctrl.h \
+ /usr/include/curses.h /usr/include/c++/13/iostream \
+ /usr/include/c++/13/thread /usr/include/c++/13/bits/this_thread_sleep.h

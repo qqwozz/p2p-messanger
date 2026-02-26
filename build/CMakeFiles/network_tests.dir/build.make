@@ -94,6 +94,8 @@ network_tests: CMakeFiles/network_tests.dir/tests/network_tests.cpp.o
 network_tests: CMakeFiles/network_tests.dir/build.make
 network_tests: libnetwork.a
 network_tests: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0
+network_tests: libcrypto.a
+network_tests: /usr/lib/x86_64-linux-gnu/libcrypto.so
 network_tests: CMakeFiles/network_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/comp/Desktop/p2p-messanger/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable network_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/network_tests.dir/link.txt --verbose=$(VERBOSE)

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/console_client.dir/src/ui/console_client.cpp.o -o console_client  libnetwork.a libcrypto.a /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0 -lcurses /usr/lib/x86_64-linux-gnu/libform.so /usr/lib/x86_64-linux-gnu/libcrypto.so 

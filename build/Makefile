@@ -178,6 +178,19 @@ network_tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/network_tests.dir/build.make CMakeFiles/network_tests.dir/build
 .PHONY : network_tests/fast
 
+#=============================================================================
+# Target rules for targets named console_client
+
+# Build rule for target.
+console_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 console_client
+.PHONY : console_client
+
+# fast build rule for target.
+console_client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/console_client.dir/build.make CMakeFiles/console_client.dir/build
+.PHONY : console_client/fast
+
 src/crypto/crypto.o: src/crypto/crypto.cpp.o
 .PHONY : src/crypto/crypto.o
 
@@ -225,6 +238,54 @@ src/network/network.s: src/network/network.cpp.s
 src/network/network.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/network.dir/build.make CMakeFiles/network.dir/src/network/network.cpp.s
 .PHONY : src/network/network.cpp.s
+
+src/network/peer_connection.o: src/network/peer_connection.cpp.o
+.PHONY : src/network/peer_connection.o
+
+# target to build an object file
+src/network/peer_connection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/network.dir/build.make CMakeFiles/network.dir/src/network/peer_connection.cpp.o
+.PHONY : src/network/peer_connection.cpp.o
+
+src/network/peer_connection.i: src/network/peer_connection.cpp.i
+.PHONY : src/network/peer_connection.i
+
+# target to preprocess a source file
+src/network/peer_connection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/network.dir/build.make CMakeFiles/network.dir/src/network/peer_connection.cpp.i
+.PHONY : src/network/peer_connection.cpp.i
+
+src/network/peer_connection.s: src/network/peer_connection.cpp.s
+.PHONY : src/network/peer_connection.s
+
+# target to generate assembly for a file
+src/network/peer_connection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/network.dir/build.make CMakeFiles/network.dir/src/network/peer_connection.cpp.s
+.PHONY : src/network/peer_connection.cpp.s
+
+src/ui/console_client.o: src/ui/console_client.cpp.o
+.PHONY : src/ui/console_client.o
+
+# target to build an object file
+src/ui/console_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/console_client.dir/build.make CMakeFiles/console_client.dir/src/ui/console_client.cpp.o
+.PHONY : src/ui/console_client.cpp.o
+
+src/ui/console_client.i: src/ui/console_client.cpp.i
+.PHONY : src/ui/console_client.i
+
+# target to preprocess a source file
+src/ui/console_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/console_client.dir/build.make CMakeFiles/console_client.dir/src/ui/console_client.cpp.i
+.PHONY : src/ui/console_client.cpp.i
+
+src/ui/console_client.s: src/ui/console_client.cpp.s
+.PHONY : src/ui/console_client.s
+
+# target to generate assembly for a file
+src/ui/console_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/console_client.dir/build.make CMakeFiles/console_client.dir/src/ui/console_client.cpp.s
+.PHONY : src/ui/console_client.cpp.s
 
 tests/crypto_tests.o: tests/crypto_tests.cpp.o
 .PHONY : tests/crypto_tests.o
@@ -283,6 +344,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... console_client"
 	@echo "... crypto"
 	@echo "... crypto_tests"
 	@echo "... network"
@@ -293,6 +355,12 @@ help:
 	@echo "... src/network/network.o"
 	@echo "... src/network/network.i"
 	@echo "... src/network/network.s"
+	@echo "... src/network/peer_connection.o"
+	@echo "... src/network/peer_connection.i"
+	@echo "... src/network/peer_connection.s"
+	@echo "... src/ui/console_client.o"
+	@echo "... src/ui/console_client.i"
+	@echo "... src/ui/console_client.s"
 	@echo "... tests/crypto_tests.o"
 	@echo "... tests/crypto_tests.i"
 	@echo "... tests/crypto_tests.s"

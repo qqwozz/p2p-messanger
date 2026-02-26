@@ -56,6 +56,27 @@ int main() {
         std::cout << "AES encrypt/decrypt: " << ((plaintext == to_string(dec)) ? "OK" : "FAIL")
                   << "\n\n";
 
+        // Попробуем умышленно испортить тег и убедиться, что проверка целостности срабатывает.
+        std::cout << "== AES-256-GCM integrity check test ==\n";
+        auto tampered = enc;
+        if (!tampered.tag.empty()) {
+            tampered.tag[0] ^= 0xFF;  // инвертируем один байт тега
+        }
+
+        bool auth_failed = false;
+        try {
+            auto _ = aes256_gcm_decrypt(aes_key, tampered, aad);
+            (void)_;
+        } catch (const std::exception&) {
+            auth_failed = true;
+        }
+
+        std::cout << "AES-GCM tamper detection: " << (auth_failed ? "OK" : "FAIL") << "\n\n";
+        if (!auth_failed) {
+            std::cerr << "AES-GCM integrity test FAILED\n";
+            return 1;
+        }
+
         // --- Тест подписи и проверки ---
         std::cout << "== RSA sign/verify test ==\n";
         std::string msg = "Message to sign";
@@ -67,6 +88,19 @@ int main() {
 
         bool valid_by_pub = alice_pub_loaded.verify(msg_bytes, signature);
         std::cout << "Verify by loaded public key: " << (valid_by_pub ? "OK" : "FAIL") << "\n\n";
+
+        // Проверяем, что подпись по испорченным данным НЕ проходит.
+        std::cout << "== RSA tampered signature test ==\n";
+        auto bad_sig = signature;
+        if (!bad_sig.empty()) {
+            bad_sig[0] ^= 0xFF;  // искажаем подпись
+        }
+        bool tampered_ok = alice_pub_loaded.verify(msg_bytes, bad_sig);
+        std::cout << "Verify tampered signature: " << (tampered_ok ? "OK" : "EXPECTED FAIL") << "\n\n";
+        if (tampered_ok) {
+            std::cerr << "Tampered signature verification unexpectedly succeeded\n";
+            return 1;
+        }
 
         // --- Тест handshake ---
         std::cout << "== Handshake test (Alice -> Bob) ==\n";

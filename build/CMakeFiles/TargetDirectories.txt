@@ -2,6 +2,7 @@
 /home/comp/Desktop/p2p-messanger/build/CMakeFiles/network.dir
 /home/comp/Desktop/p2p-messanger/build/CMakeFiles/crypto_tests.dir
 /home/comp/Desktop/p2p-messanger/build/CMakeFiles/network_tests.dir
+/home/comp/Desktop/p2p-messanger/build/CMakeFiles/console_client.dir
 /home/comp/Desktop/p2p-messanger/build/CMakeFiles/test.dir
 /home/comp/Desktop/p2p-messanger/build/CMakeFiles/edit_cache.dir
 /home/comp/Desktop/p2p-messanger/build/CMakeFiles/rebuild_cache.dir

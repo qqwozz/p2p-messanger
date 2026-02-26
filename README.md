@@ -17,11 +17,12 @@
 - Компилятор с поддержкой C++17
 - OpenSSL (библиотека `libcrypto`)
 - Boost.Asio (через пакет `libboost-system`)
+- ncurses (для консольного интерфейса)
 
 На Ubuntu/Debian можно установить так:
 
 ```bash
-sudo apt install build-essential cmake libssl-dev libboost-system-dev
+sudo apt install build-essential cmake libssl-dev libboost-system-dev libncurses-dev
 ```
 
 ### Сборка и запуск тестов
@@ -33,10 +34,11 @@ cd build
 ctest --output-on-failure
 ```
 
-Будут собраны библиотеки и тесты:
+Будут собраны библиотеки, тесты и пример клиента:
 
 - `crypto` + `crypto_tests`
 - `network` + `network_tests`
+- `console_client` — простейший консольный чат-клиент на ncurses
 
 `crypto_tests`:
 
@@ -243,3 +245,38 @@ python3 signaling_server.py
   - для локальной разработки используется `network_tests` (оба пира на `127.0.0.1`), чтобы убедиться, что:
     - формат пакетов корректен,
     - отправка/приём и hole punching логика работают хотя бы без NAT. 
+
+---
+
+### Этап 7: Консольный интерфейс (ncurses)
+
+Файл: `src/ui/console_client.cpp`
+
+Это минимальный TUI-клиент, который демонстрирует:
+
+- список контактов (пока один захардкоженный `peer`) слева;
+- окно чата справа;
+- строку ввода внизу;
+- базовые команды:
+  - `/help` — показать доступные команды;
+  - `/quit` — выйти.
+
+Сейчас он работает в "офлайн"-режиме:
+
+- набранные сообщения сразу отображаются как `me: ...`;
+- затем выводится псевдо-ответ `peer: (echo) ...`;
+- сетевой стек (`network` + `PeerConnection`) подключён в виде заголовков, но для простоты не используется.
+
+Запуск консольного клиента:
+
+```bash
+cmake -S . -B build
+cmake --build build -j4
+./build/console_client
+```
+
+В дальнейшем сюда можно будет "подвесить" реальные вызовы:
+
+- `PeerConnection::connectToPeer()` при выборе контакта;
+- `PeerConnection::sendEncryptedMessage()` при отправке сообщения;
+- обработку входящих `Packet` из `UdpEndpoint` в отдельном потоке с добавлением строк в историю чата.

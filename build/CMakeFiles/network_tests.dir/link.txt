@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/network_tests.dir/tests/network_tests.cpp.o -o network_tests  libnetwork.a /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0 
+/usr/bin/c++ CMakeFiles/network_tests.dir/tests/network_tests.cpp.o -o network_tests  libnetwork.a /usr/lib/x86_64-linux-gnu/libboost_system.so.1.83.0 libcrypto.a /usr/lib/x86_64-linux-gnu/libcrypto.so 
